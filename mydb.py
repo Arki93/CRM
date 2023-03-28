@@ -1,9 +1,10 @@
-import mysql.connector 
+import mysql.connector as msc
+import os
 
-dataBase = mysql.connector.connect(
+dataBase = msc.connect(
     host = 'localhost',
-    user = 'root',
-    passwd = '12memoreX-!'
+    user = os.environ.get("SQL_USER"),
+    passwd = os.environ.get("SQL_PASSWD"),
     )
 
 cursorObject = dataBase.cursor()
