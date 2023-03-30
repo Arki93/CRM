@@ -5,19 +5,19 @@
     <h1>Hello World!</h1>
     {% else %}    
     <h1>Login</h1>
-    <br>
+    <br>   
     <form method="POST" action="{% url 'home' %}">
         {% csrf_token %}
-        <form>
-            <div class="mb-3">
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email_user" placeholder="User Name" required>          
-            </div>
-            <div class="mb-3">
-            <input type="password" class="form-control" id="exampleInputPassword1" name="passwd_user" placeholder="Password" required>
-            </div>        
-            <button type="submit" class="btn btn-secondary">Login</button>
-        </form>
+       
+        <div class="mb-3">
+            <input type="text" class="form-control" name="username" placeholder="User Name" required>          
+        </div>
+        <div class="mb-3">
+            <input type="password" class="form-control" name="password" placeholder="Password" required>
+        </div>        
+        <button type="submit" class="btn btn-secondary">Login</button>        
     </form>
+    
     {% endif %}
 </div>
 {% endblock %}
