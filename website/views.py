@@ -23,9 +23,8 @@ def home(request):
         return render(request, "home.html", {'records':records})
 
 
-# def login_user(request):
-#     pass
-
+def login_user(request):
+    pass
 
 def logout_user(request):
     logout(request)
@@ -50,3 +49,11 @@ def register_user(request):
         return render(request, "register.html", {"form": form})
 
     return render(request, "register.html", {"form": form})
+
+def data_record(request, pk):
+    if request.user.is_authenticated:
+        rec_data = Record.objects.get(id=pk) 
+        return render(request, "data_record.html", {"rec_data": rec_data})
+    else:
+        messages.warning(request, "You are not logged in!")
+        return redirect("home")  
