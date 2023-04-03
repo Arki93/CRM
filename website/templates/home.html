@@ -26,9 +26,9 @@
         </tr>
     </tbody>
     </table>        
-    {% else %}    
-    <h1 class="col-md-6 offset-md-3">Login</h1>
-    <br>   
+    {% else %} 
+    <div >
+    <h1 class="col-md-6 offset-md-3 mb-4">Login</h1>             
     <form method="POST" action="{% url 'home' %}">
         {% csrf_token %}
        
@@ -39,7 +39,8 @@
             <input type="password" class="form-control" name="password" placeholder="Password" required>
         </div>        
         <button type="submit" class="btn btn-secondary offset-md-3">Login</button>        
-    </form>    
+    </form>
+    </div>    
     {% endif %}
 </div>
 {% endblock %}

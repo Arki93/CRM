@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import SignupForm
 from .models import Record
@@ -53,7 +54,21 @@ def register_user(request):
 def data_record(request, pk):
     if request.user.is_authenticated:
         rec_data = Record.objects.get(id=pk) 
-        return render(request, "data_record.html", {"rec_data": rec_data})
+        attrs = ['email', 'phone_number', 'city', 'state']              
+        return render(request, "data_record.html", {"rec_data": rec_data, 'attrs': attrs})
     else:
         messages.warning(request, "You are not logged in!")
         return redirect("home")  
+
+def delete_record(request, pk):
+    if request.user.is_authenticated:
+        delete_data = Record.objects.get(id=pk) 
+        delete_data.delete()
+        messages.success(request, "Record Deleted Successfully!")
+        return redirect("home")
+    else:
+        messages.warning(request, "You are not logged in!")
+        return redirect("home")  
+    
+def add_record(request):
+    return render(request, "add_record.html", {})

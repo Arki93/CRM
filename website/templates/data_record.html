@@ -1,6 +1,20 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Recorded Data</h1>
-
+<div class="card">
+    <div class="card-header">
+      {{rec_data.first_name}} {{rec_data.last_name}}
+    </div>
+    <div class="card-body">        
+        <p class="card-text">{{ rec_data.email }}</p>
+        <p class="card-text">{{ rec_data.phone_number }}</p> 
+        <p class="card-text">{{ rec_data.city }}</p> 
+        <p class="card-text">{{ rec_data.state }}</p>           
+    </div>    
+</div>
+<br/>
+<div>
+    <a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
+    <a href="{% url 'delete' rec_data.id %}" class="btn btn-danger">Delete</a>
+</div>
 {% endblock %}
